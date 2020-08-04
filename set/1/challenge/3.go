@@ -19,10 +19,15 @@ func SingleByteXorCipher(message []byte, key byte) ([]byte, error) {
 	return Xor(message, keyBytes)
 }
 
-const englishChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz '\n"
+// EnglishChars is a set of characters commonly used in the English
+// language.
+const EnglishChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz '\n"
 
-func isEnglishChar(byt byte) bool {
-	for _, char := range englishChars {
+// IsEnglishChar takes a byte and returns true if and only if that
+// byte is the ASCII value of a character commonly used in the English
+// language.
+func IsEnglishChar(byt byte) bool {
+	for _, char := range EnglishChars {
 		if byt == byte(char) {
 			return true
 		}
@@ -38,7 +43,7 @@ func Score(message []byte) float64 {
 	var ret float64
 
 	for _, byt := range message {
-		if isEnglishChar(byt) {
+		if IsEnglishChar(byt) {
 			ret += 1.0 / float64(len(message))
 		}
 	}

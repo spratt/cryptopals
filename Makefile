@@ -5,7 +5,7 @@ build:
 	go build ./...
 
 lint:
-	golangci-lint run ./... --enable-all
+	golangci-lint --exclude-use-default=false run
 
 fmt:
 	gofumpt -w .

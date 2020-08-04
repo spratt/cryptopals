@@ -6,8 +6,12 @@ import (
 	"fmt"
 )
 
+// ErrUnequalLengths is the error returned by Xor if the left and
+// right values don't have equal length.
 var ErrUnequalLengths = errors.New("unequal lengths")
 
+// Xor takes a left and right []byte and returns the resulting []byte
+// after XORing the input values together.
 func Xor(left, right []byte) ([]byte, error) {
 	if len(left) != len(right) {
 		return nil, fmt.Errorf(

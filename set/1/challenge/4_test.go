@@ -17,9 +17,10 @@ func Test_4_FindOutput(t *testing.T) {
 	inputLines := strings.Split(string(inputBytes), "\n")
 
 	var (
-		bestInput []byte
-		bestRes   []byte
 		bestScore float64
+		bestKey   byte
+		bestRes   string
+		bestInput []byte
 	)
 
 	for _, input := range inputLines {
@@ -38,11 +39,13 @@ func Test_4_FindOutput(t *testing.T) {
 
 			if score > bestScore {
 				bestScore = score
+				bestKey = key
+				bestRes = strings.Trim(string(res), "\n")
 				bestInput = inputBytes
-				bestRes = res
 			}
 		}
 	}
 
-	t.Logf("Score %f string %s input %v", bestScore, string(bestRes), bestInput)
+	t.Logf("Score %f key %d string `%s`", bestScore, bestKey, bestRes)
+	t.Logf("\t%v", bestInput)
 }

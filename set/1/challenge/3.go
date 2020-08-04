@@ -19,10 +19,16 @@ func SingleByteXorCipher(message []byte, key byte) ([]byte, error) {
 	return Xor(message, keyBytes)
 }
 
+const englishChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz '\n"
+
 func isEnglishChar(byt byte) bool {
-	return (byt >= byte('A') && byt <= byte('Z')) ||
-		(byt >= byte('a') && byt <= byte('z')) ||
-		byt == byte(' ')
+	for _, char := range englishChars {
+		if byt == byte(char) {
+			return true
+		}
+	}
+
+	return false
 }
 
 // Score takes a message []byte and returns a decimal value

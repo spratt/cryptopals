@@ -15,8 +15,9 @@ func Test_3_FindOutput(t *testing.T) {
 	}
 
 	var (
-		bestRes   []byte
 		bestScore float64
+		bestKey   byte
+		bestRes   []byte
 	)
 
 	for key := byte(0); key < byte(255); key++ {
@@ -29,9 +30,10 @@ func Test_3_FindOutput(t *testing.T) {
 
 		if score > bestScore {
 			bestScore = score
+			bestKey = key
 			bestRes = res
 		}
 	}
 
-	t.Logf("Score %f string %s", bestScore, string(bestRes))
+	t.Logf("Score %f key %d string `%s`", bestScore, bestKey, string(bestRes))
 }

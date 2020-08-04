@@ -29,7 +29,7 @@ func HexStringToBytes(hex string) ([]byte, error) {
 	for i := 0; i < len(hex)/2; i++ {
 		byteStr := hex[2*i : (2*i)+2]
 
-		curByte, err := strconv.ParseInt(byteStr, HexBase, ByteBitSize)
+		curByte, err := strconv.ParseUint(byteStr, HexBase, ByteBitSize)
 		if err != nil {
 			return nil, err
 		}

@@ -1,5 +1,7 @@
 # cryptopals
 
+![Build](https://github.com/spratt/cryptopals/workflows/Go/badge.svg)
+
 My answers to the Matasano cryptopals challenges.  If you don't want
 to be spoiled, don't read them.
 

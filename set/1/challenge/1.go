@@ -1,4 +1,4 @@
-// Package challenge contains the solutions for cryptopals set 1 challenge 1
+// Package challenge contains the solutions for cryptopals set 1.
 package challenge
 
 import (

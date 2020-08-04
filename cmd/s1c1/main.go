@@ -12,7 +12,7 @@ import (
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-    untrimmedHex, err := reader.ReadString('\n')
+	untrimmedHex, err := reader.ReadString('\n')
 	common.PanicIfNotNil(err)
 
 	hexStr := strings.Trim(untrimmedHex, "\n ")

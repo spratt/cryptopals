@@ -33,7 +33,7 @@ func Test_2_ExpectedOutput(t *testing.T) {
 
 	actualBase64 := challenge.BytesToBase64(actual)
 	expectedBase64 := challenge.BytesToBase64(expectedBytes)
-	
+
 	if actualBase64 != expectedBase64 {
 		t.Errorf("left %s right %s expected %s actual %s",
 			left, right, expectedBase64, actualBase64,

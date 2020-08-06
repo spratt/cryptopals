@@ -1,22 +1,10 @@
 package challenge
 
-import (
-	"bytes"
-)
-
 // SingleByteXorCipher takes a message []byte and a key byte, creates
 // a []byte with every byte equal to key, and XORs this []byte against
 // message and returns the result.
 func SingleByteXorCipher(message []byte, key byte) ([]byte, error) {
-	buf := bytes.NewBuffer([]byte{})
-
-	for i := 0; i < len(message); i++ {
-		buf.Write([]byte{key})
-	}
-
-	keyBytes := buf.Bytes()
-
-	return Xor(message, keyBytes)
+	return RepeatingKeyXorCipher(message, []byte{key})
 }
 
 // EnglishChars is a set of characters commonly used in the English

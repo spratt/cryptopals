@@ -2,7 +2,6 @@ package challenge_test
 
 import (
 	"io/ioutil"
-	"strings"
 	"testing"
 
 	"github.com/spratt/cryptopals/set/1/challenge"
@@ -16,9 +15,7 @@ func Test_7_DecryptAes128Ecb(t *testing.T) {
 		t.Error(err)
 	}
 
-	trimmed := strings.Trim(string(base64Bytes), " \n")
-
-	inputBytes, err := challenge.Base64ToBytes(trimmed)
+	inputBytes, err := challenge.Base64ToBytes(string(base64Bytes))
 	if err != nil {
 		t.Error(err)
 	}

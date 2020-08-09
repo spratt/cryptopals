@@ -1,6 +1,7 @@
 package challenge_test
 
 import (
+	"io/ioutil"
 	"testing"
 
 	"github.com/spratt/cryptopals/set/1/challenge"
@@ -33,4 +34,52 @@ func Test_6_HammingDistance(t *testing.T) {
 			)
 		}
 	}
+}
+
+func Test_6_BreakRepeatingKeyXor(t *testing.T) {
+	base64Bytes, err := ioutil.ReadFile("6.txt")
+	if err != nil {
+		t.Error(err)
+	}
+
+	inputBytes, err := challenge.Base64ToBytes(string(base64Bytes))
+	if err != nil {
+		t.Error(err)
+	}
+
+	KEYSIZE := challenge.FindProbableKeysize(inputBytes)
+	t.Logf("Probable KEYSIZE %d", KEYSIZE)
+
+	// make a block that is the first byte of every block, and a block
+	// that is the second byte of every block, and so on.
+	parts := [][]byte{}
+
+	for i := 0; i < KEYSIZE; i++ {
+		parts = append(parts, []byte{})
+	}
+
+	for i, byt := range inputBytes {
+		parts[i%KEYSIZE] = append(parts[i%KEYSIZE], byt)
+	}
+
+	// Solve each block as if it was single-character XOR.
+	key := []byte{}
+
+	for _, part := range parts {
+		singleByteKey, _, findErr := challenge.FindSingleByteXorCipherKey(part)
+		if findErr != nil {
+			t.Error(findErr)
+		}
+
+		key = append(key, singleByteKey)
+	}
+
+	t.Logf("Probable key `%s`", string(key))
+
+	plaintext, err := challenge.RepeatingKeyXorCipher(inputBytes, key)
+	if err != nil {
+		t.Error(err)
+	}
+
+	t.Log(string(plaintext))
 }

@@ -32,6 +32,7 @@ linters-settings:
       - octalLiteral
       - whyNoLint
       - wrapperFunc
+      - unnamedResult
   gocyclo:
     min-complexity: 15
   goimports:
@@ -108,7 +109,6 @@ linters:
     - varcheck
     - whitespace
     - asciicheck
-    - gochecknoglobals
     - gocognit
     - godot
     - godox

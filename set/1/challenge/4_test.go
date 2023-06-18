@@ -1,7 +1,7 @@
 package challenge_test
 
 import (
-	"io/ioutil"
+	"os"
 	"strings"
 	"testing"
 
@@ -9,7 +9,7 @@ import (
 )
 
 func Test_4_FindOutput(t *testing.T) {
-	inputBytes, err := ioutil.ReadFile("4.txt")
+	inputBytes, err := os.ReadFile("4.txt")
 	if err != nil {
 		t.Error(err)
 	}

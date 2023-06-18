@@ -1,8 +1,8 @@
 package challenge_test
 
 import (
-	"io/ioutil"
 	"math"
+	"os"
 	"strings"
 	"testing"
 
@@ -266,7 +266,7 @@ func Test_8_ComputeCharacterFrequencies(t *testing.T) {
 }
 
 func Test_8_DetectAes128Ecb(t *testing.T) {
-	hexBytes, err := ioutil.ReadFile("8.txt")
+	hexBytes, err := os.ReadFile("8.txt")
 	if err != nil {
 		t.Error(err)
 	}
@@ -319,7 +319,7 @@ func Test_8_DecryptAes128Ecb(t *testing.T) {
 	// forever so let's skip it.
 	t.SkipNow()
 
-	hexBytes, err := ioutil.ReadFile("8.txt")
+	hexBytes, err := os.ReadFile("8.txt")
 	if err != nil {
 		t.Error(err)
 	}

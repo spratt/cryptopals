@@ -1,7 +1,7 @@
 package challenge_test
 
 import (
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/spratt/cryptopals/set/1/challenge"
@@ -37,7 +37,7 @@ func Test_6_HammingDistance(t *testing.T) {
 }
 
 func Test_6_BreakRepeatingKeyXor(t *testing.T) {
-	base64Bytes, err := ioutil.ReadFile("6.txt")
+	base64Bytes, err := os.ReadFile("6.txt")
 	if err != nil {
 		t.Error(err)
 	}

@@ -8,7 +8,7 @@ build_tests:
 	go test -run xxxxx ./...
 
 lint:
-	golangci-lint --exclude-use-default=false run
+	golangci-lint run
 
 fmt:
 	gofumpt -w .
